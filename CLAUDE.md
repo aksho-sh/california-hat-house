@@ -29,12 +29,20 @@ The current production webpage is hosted at californiahathouse.com.
 ## Architecture
 
 ### File Structure
-- `src/App.jsx` — Main landing page with all components defined inline (Navbar, Hero, Collections, ProductSlider, Philosophy, Footer)
-- `src/AboutUs.jsx` — Standalone About Us page with its own nav, hero, story sections, and footer
-- `src/main.jsx` — Entry point with BrowserRouter; routes: `/` → App, `/about` → AboutUs
+- `src/App.jsx` — Main landing page with inline section components (Hero, Collections, ProductSlider, Philosophy, Footer)
+- `src/AboutUs.jsx` — Standalone About Us page (hero, story sections, footer)
+- `src/Shop.jsx` — Shop All page with sticky FilterBar (category × city chips, sort dropdown) and product grid
+- `src/Collections.jsx` — Magazine-style index of all city collections with region filter and editor's picks
+- `src/CityCollection.jsx` — Parametric per-city page (`/collections/:city`); CITIES map covers los-angeles, san-francisco, san-diego, oakland, norcal, socal
+- `src/ProductDetail.jsx` — Single product page (`/products/:handle`); gallery cross-fade, color/size/qty pickers, accordions, related products
+- `src/Contact.jsx` — Contact form, info cards, FAQ accordion, social strip
+- `src/NavBar.jsx` — Shared navbar component; exports `COLLECTION_LINKS`. Props: `variant` (`'morph'` for landing — transparent → solid on scroll; `'solid'` for subpages), `showBackHome` to swap search/user cluster for a "Back to Home" link
+- `src/main.jsx` — Entry point with BrowserRouter and all routes (`/`, `/about`, `/shop`, `/collections`, `/collections/:city`, `/products/:handle`, `/contact`)
 - `src/index.css` — Tailwind directives + custom utilities (`btn-magnetic`, `link-hover`, `ease-magnetic`, `fadeSlideUp` keyframe)
 - `src/App.css` — Legacy Vite template styles (largely unused)
 - `index.html` — Includes Google Fonts links, SVG noise filter overlay at 0.05 opacity, body classes
+- `PRODUCTION_REFERENCE.md` — Snapshot of the live californiahathouse.com site (catalog, copy, mood tags) for reference when building dummy data
+- `README.md` — Public-facing project README (setup, scripts, routes, design tokens, deployment)
 
 ### Design System (from `tailwind.config.js`)
 Preset C — "Golden State Heritage" (Coastal Streetwear):
